@@ -1,0 +1,385 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'lato', sans-serif;
+    font-size: 16px;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+.content {
+    min-height: calc(100vh - 65px);
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-min-height {
+    min-height: 100%;
+}
+
+.flexbox {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.flexbox-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.input-field {
+    border: none;
+    border-bottom: 2px solid #b2b2b2;
+    padding: 5px;
+    color: #808080;
+    font-size: 18px;
+    outline: none;
+    transition: border 0.5s;
+}
+
+.input-field:focus {
+    border-bottom: 2px solid #58ADE3;
+}
+
+::placeholder {
+    color: #808080;
+}
+
+.button {
+    background-color: #58ADE3;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #3499DB;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.login-error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.logout-success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-container {
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px #808080;
+    padding: 20px;
+    width: 500px;
+}
+
+.top-bottom-margin {
+    margin: 30px 0;
+}
+
+.top-margin {
+    margin-top: 10px;
+}
+
+.top-bottom-small-margin {
+    margin: 10px 0;
+}
+
+.heading {
+    color: #808080;
+    font-weight: 400;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.validation-error {
+    padding: 5px;
+    font-size: 13px;
+    color: #D8000C;
+    float: left;
+}
+
+.input-field-container {
+    display: block;
+    margin-top: 15px;
+    color: #808080;
+    overflow: auto;
+}
+
+nav {
+    overflow: auto;
+    background-color: #58ADE3;
+}
+
+.nav-link {
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #3499DB;
+}
+
+.nav-fancy-link {
+    font-size: 16px;
+    display: inline-block;
+    padding: 16px;
+    text-decoration: none;
+    color: white;
+    background-color: inherit;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.nav-fancy-link:hover {
+    background-color: #FFC930;
+}
+
+.banner-heading {
+    background-image: url("../images/home.jpg");
+    height: 800px;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #58ADE3;
+}
+
+.banner-heading-1 {
+    font-size: 8vw;
+    font-weight: 400;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.banner-heading-2 {
+    font-size: 4vw;
+    font-weight: 400;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    box-shadow: 0 0 5px #808080;
+    color: #808080;
+    transition: box-shadow 0.5s, transform 0.5s;
+    padding: 5px;
+}
+
+.quiz-link > span {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    line-height: 1.5em;
+}
+
+.quiz-link:hover {
+    color: #3499DB;
+    box-shadow: 0 0 10px #3499DB;
+    transform: scale(1.1);
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    color: #808080;
+    padding: 20px;
+}
+
+.timer-container {
+    width: 100px;
+    box-shadow: 0 0 3px #58ADE3;
+    margin: 10px;
+}
+
+.timer-title {
+    color: #58ADE3;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.timer {
+    background-color: #58ADE3;
+    color: white;
+    font-size: 60px;
+    height: 70px;
+    line-height: 60px;
+    padding: 5px;
+}
+
+.quiz-question {
+    min-height: 60px;
+    user-select: none;
+    resize: vertical;
+    overflow: auto;
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+
+.question-option-container {
+    display: block;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    overflow: auto;
+    resize: vertical;
+    min-height: 60px;
+}
+
+.question-option-container:hover {
+    border-radius: 10px;
+    box-shadow: 0 0 5px #3499DB;
+}
+
+.question-option {
+    display: inline-block;
+    padding: 10px 10px 10px 80px;
+}
+
+.default-radio {
+    display: none;
+}
+
+.custom-radio {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid #85C4ED;
+    transition: border 0.5s;
+}
+
+.question-option-container:hover .custom-radio {
+    border: 4px solid #3499DB;
+}
+
+.question-option-container .default-radio:checked + .custom-radio {
+    border: 4px solid #3499DB;
+}
+
+.question-option-container .default-radio:checked + .custom-radio:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    background-color: #3499DB;
+    border-radius: 50%;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.flexbox-space-between {
+    justify-content: space-between;
+}
+
+.top-bottom-padding {
+    padding: 10px 0;
+}
+
+.padding {
+    padding: 10px;
+}
+
+.quiz-grid {
+    padding: 20px;
+}
+
+.half-width {
+    width: 50%;
+}
+
+table {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    color: #808080;
+}
+
+table thead {
+    background-color: #58ADE3;
+    color: #fff;
+}
+
+table thead tr th {
+    padding: 10px;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f8f6ff;
+}
+
+table tbody tr td {
+    padding: 10px;
+    text-align: center;
+}
+
+.no-result {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12vw;
+    padding: 40px;
+    color: rgba(178, 178, 178, 0.5);
+}

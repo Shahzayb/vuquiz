@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shahzaib Sarwar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/main.css" th:href="@{/style/main.css}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+<div class="content flexbox flexbox-center">
+    <div class="form-container">
+
+        <h1 class="heading text-center">Login</h1>
+
+        <div class="login-error top-margin text-center" th:if="${param.error}">Invalid username or password</div>
+        <div class="logout-success top-margin text-center" th:if="${param.success}">Logout successful</div>
+
+        <form th:action="@{/login}" method="post">
+            <label class="input-field-container">
+                Username
+                <input id="username" type="text" name="username" class="input-field full-width">
+            </label>
+
+            <label class="input-field-container">
+                Password
+                <input id="password" type="password" name="password" class="input-field full-width">
+            </label>
+
+            <input type="submit" value="Login" class="button full-width top-bottom-margin">
+        </form>
+
+        <a href="register.html" th:href="@{/register}" class="float-right">New User? Register Here</a>
+    </div>
+
+</div>
+<footer class="full-width">
+    &copy; VU QUIZ <span th:text="${#dates.year(#dates.createNow())}">1995</span> &#9473; created by Shahzaib
+</footer>
+</body>
+</html>

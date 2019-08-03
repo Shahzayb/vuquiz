@@ -1,0 +1,18 @@
+{
+  "properties": [
+    {
+      "name": "vu.quiz",
+      "type": "java.lang.String",
+      "description": "Configurations for vu quiz app."
+    },
+    {
+      "name": "vu.quiz.total-questions",
+      "type": "java.lang.Integer",
+      "description": "Total questions per quiz."
+    },
+    {
+      "name": "vu.quiz.seconds-per-question",
+      "type": "java.lang.Integer",
+      "description": "time limit (in seconds) to give the answer."
+    }
+  ] }

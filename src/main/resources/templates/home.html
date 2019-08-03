@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shahzaib Sarwar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/main.css" th:href="@{/style/main.css}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700" rel="stylesheet">
+    <title>VU Quiz</title>
+</head>
+<body>
+<div class="content">
+    <header>
+        <nav>
+            <a class="nav-link float-left" th:href="@{/}" href="home.html">Home</a>
+            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Result</a>
+
+            <a class="nav-fancy-link float-right" th:href="@{/login}" href="login.html" sec:authorize="!isAuthenticated()">Login</a>
+            <form th:action="@{/logout}" method="post" class="float-right" sec:authorize="isAuthenticated()">
+                <input type="submit" value="Logout" class="nav-fancy-link">
+            </form>
+            <a class="nav-fancy-link float-right" sec:authorize="isAuthenticated()"
+               sec:authentication="name">Username</a>
+        </nav>
+    </header>
+
+    <div class="banner-heading">
+        <div class="banner-heading-1">Welcome to VU Quiz</div>
+        <div class="banner-heading-2">- Take a quiz to test yourself</div>
+    </div>
+
+    <div>
+        <h1 class="heading text-center top-bottom-margin">Start a quiz</h1>
+        <div class="grid">
+            <a href="quiz.html" th:href="@{/quiz/start/CS101}" class="quiz-link"><span>Introduction to Programming</span></a>
+            <a href="quiz.html" th:href="@{/quiz/start/MTH101}" class="quiz-link"><span>Calculus and Analytical Geometry</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+            <a href="#" class="quiz-link"><span>Example</span></a>
+        </div>
+    </div>
+</div>
+<footer class="full-width">
+    &copy; VU QUIZ <span th:text="${#dates.year(#dates.createNow())}">1995</span> &#9473; created by Shahzaib
+</footer>
+
+</body>
+</html>

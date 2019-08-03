@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shahzaib Sarwar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/main.css" th:href="@{/style/main.css}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700" rel="stylesheet">
+    <title>Register</title>
+</head>
+<body>
+<div class="content flexbox flexbox-center">
+
+    <div class="form-container">
+
+        <h1 class="heading text-center">Register</h1>
+
+        <form th:action="@{/register}" method="post" th:object="${reg}">
+
+            <label class="input-field-container">
+                Username
+                <input type="text" th:field="*{username}"
+                       class="input-field full-width">
+                <span class="validation-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
+            </label>
+            <label class="input-field-container">
+                Password
+                <input type="password" th:field="*{password}"
+                       class="input-field full-width">
+                <span class="validation-error" th:if="${#fields.hasErrors('password')}"
+                      th:errors="*{password}">Password Error</span>
+            </label>
+            <label class="input-field-container">
+                Confirm Password
+                <input type="password" th:field="*{confirmPassword}"
+                       class="input-field full-width">
+                <span class="validation-error" th:if="${#fields.hasErrors('confirmPassword')}"
+                      th:errors="*{confirmPassword}">Password Match Error</span>
+            </label>
+
+            <label class="input-field-container">
+                First Name
+                <input type="text" th:field="*{firstName}"
+                       class="input-field full-width">
+                <span class="validation-error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</span>
+            </label>
+
+            <label class="input-field-container">
+                Last Name
+                <input type="text" th:field="*{lastName}"
+                       class="input-field full-width">
+                <span class="validation-error" th:if="${#fields.hasErrors('lastName')}"
+                      th:errors="*{lastName}">Last Name Error</span>
+            </label>
+
+            <input type="submit" value="Register" class="button full-width top-bottom-margin">
+
+        </form>
+
+        <a href="login.html" th:href="@{/login}" class="float-right">Already have an account? Login</a>
+
+
+    </div>
+</div>
+<footer class="full-width">
+    &copy; VU QUIZ <span th:text="${#dates.year(#dates.createNow())}">1995</span> &#9473; created by Shahzaib
+</footer>
+
+</body>
+</html>

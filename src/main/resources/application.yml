@@ -1,0 +1,13 @@
+vu:
+  quiz:
+    total-questions: 10
+    seconds-per-question: 90
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  profiles:
+    active: dev

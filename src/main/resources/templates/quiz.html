@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shahzaib Sarwar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/main.css" th:href="@{/style/main.css}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700" rel="stylesheet">
+    <title>VU Quiz</title>
+    <script th:inline="javascript">
+        window.addEventListener("load", function() {
+            var timer = document.getElementById("timer");
+            var form = document.getElementById("form");
+
+            var questionTimestamp = [[${session.questionTimestamp}]];
+            var secPerQuestion = [[${session.secPerQuestion}]];
+            var remTime = secPerQuestion - Math.floor((Date.now() - new Date(questionTimestamp)) / 1000);
+
+            if (remTime <= 0) {
+                form.submit();
+            }
+
+            var id = setInterval(function () {
+                timer.textContent = String(--remTime);
+                if (remTime <= 0) {
+                    clearInterval(id);
+                    form.submit();
+                }
+            }, 1000);
+        });
+    </script>
+</head>
+<body>
+<div class="content">
+    <header>
+        <nav>
+            <a class="nav-link float-left" th:href="@{/}" href="home.html">Home</a>
+            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Result</a>
+
+            <a class="nav-fancy-link float-right" th:href="@{/login}" href="login.html" sec:authorize="!isAuthenticated()">Login</a>
+            <form th:action="@{/logout}" method="post" class="float-right" sec:authorize="isAuthenticated()">
+                <input type="submit" value="Logout" class="nav-fancy-link">
+            </form>
+            <a class="nav-fancy-link float-right" sec:authorize="isAuthenticated()"
+               sec:authentication="name">Username</a>
+        </nav>
+    </header>
+    <div>
+        <div class="timer-container text-center float-right">
+            <div class="timer-title">Time Left (sec)</div>
+            <div class="timer" id="timer">
+
+            </div>
+        </div>
+
+        <div class="quiz-grid">
+            <h1 class="text-center top-bottom-padding heading"><span th:text="${session.quiz.subject.title}">introduction to programming</span> quiz</h1>
+
+            <div class="flexbox flexbox-space-between padding clear-both">
+                <div>Question <span th:text="${session.quiz.curQuestionNumber}">1</span> of <span th:text="${session.quiz.questions.size()}">10</span></div>
+                <div>Question marks : <span th:text="${session.quiz.getCurrentQuestion().getTotalMarks()}">1</span></div>
+            </div>
+
+            <div class="flexbox flexbox-center-vertical quiz-question top-margin" th:text="${session.quiz.getCurrentQuestion().question}">
+                ndouille ribeye sausage, hamburger salami ham bresaola bregenwurst. Ham tail
+                kielbasa. Pig tenderloin cow biltong cow ham cow doner brisket.
+            </div>
+
+            <form id="form" th:action="@{/quiz/question}" method="post" class="top-margin" th:object="${session.quiz.getCurrentQuestion()}">
+
+                <label class="question-option-container top-margin">
+
+                <span class="question-option" th:text="*{questionOptions.get(0).questionOption}">Andouille ribeye sausage, hamburger salami ham bresaola bregenwurst. Ham tail
+                    kielbasa. Pig tenderloin cow biltong cow ham cow doner brisket. Pastrami pig
+                    spare pig mignon tenderloin cow shoulder. Ham tip pork chop spare cow landjaeger
+                    ham swine, ribs tip sirloin cow pig ribs sirloin braunschweiger, sirloin kevin
+                    bresaola cow pancetta pork pig capicola sopressata, t-bone venison turducken tip
+                    pork bierschinken brisket ribs turducken. Tip pig andouillette. T-bone fatback
+                    drumstick cow ribeye brisket sopressata.
+                </span>
+                    <input type="radio" name="attemptedAnswerId" th:value="*{questionOptions.get(0).id}" class="default-radio">
+                    <span class="custom-radio"></span>
+
+                </label>
+
+                <label class="question-option-container top-margin">
+
+                <span class="question-option" th:text="*{questionOptions.get(1).questionOption}">Andouille ribeye sausage, hamburger salami ham bresaola bregenwurst. Ham tail
+                    kielbasa. Pig tenderloin cow biltong cow ham cow doner brisket. Pastrami pig
+                    spare pig mignon tenderloin cow shoulder. Ham tip pork chop spare cow landjaeger
+                    ham swine, ribs tip sirloin cow pig ribs sirloin braunschweiger, sirloin kevin
+                    bresaola cow pancetta pork pig capicola sopressata, t-bone venison turducken tip
+                    pork bierschinken brisket ribs turducken. Tip pig andouillette. T-bone fatback
+                    drumstick cow ribeye brisket sopressata.
+                </span>
+                    <input type="radio" name="attemptedAnswerId" th:value="*{questionOptions.get(1).id}" class="default-radio">
+                    <span class="custom-radio"></span>
+
+                </label>
+
+                <label class="question-option-container top-margin">
+
+                <span class="question-option" th:text="*{questionOptions.get(2).questionOption}">Andouille ribeye sausage, hamburger salami ham bresaola bregenwurst. Ham tail
+                    kielbasa. Pig tenderloin cow biltong cow ham cow doner brisket. Pastrami pig
+                    spare pig mignon tenderloin cow shoulder. Ham tip pork chop spare cow landjaeger
+                    ham swine, ribs tip sirloin cow pig ribs sirloin braunschweiger, sirloin kevin
+                    bresaola cow pancetta pork pig capicola sopressata, t-bone venison turducken tip
+                    pork bierschinken brisket ribs turducken. Tip pig andouillette. T-bone fatback
+                    drumstick cow ribeye brisket sopressata.
+                </span>
+                    <input type="radio" name="attemptedAnswerId" th:value="*{questionOptions.get(2).id}" class="default-radio">
+                    <span class="custom-radio"></span>
+
+                </label>
+
+                <label class="question-option-container top-margin">
+
+                <span class="question-option" th:text="*{questionOptions.get(3).questionOption}">Andouille ribeye sausage, hamburger salami ham bresaola bregenwurst. Ham tail
+                    kielbasa. Pig tenderloin cow biltong cow ham cow doner brisket. Pastrami pig
+                    spare pig mignon tenderloin cow shoulder. Ham tip pork chop spare cow landjaeger
+                    ham swine, ribs tip sirloin cow pig ribs sirloin braunschweiger, sirloin kevin
+                    bresaola cow pancetta pork pig capicola sopressata, t-bone venison turducken tip
+                    pork bierschinken brisket ribs turducken. Tip pig andouillette. T-bone fatback
+                    drumstick cow ribeye brisket sopressata.
+                </span>
+                    <input type="radio" name="attemptedAnswerId" th:value="*{questionOptions.get(3).id}" class="default-radio">
+                    <span class="custom-radio"></span>
+
+                </label>
+
+
+                <div>
+                    <input type="submit" value="Save & Next" class="button float-right top-margin half-width"/>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<footer class="full-width">
+    &copy; VU QUIZ <span th:text="${#dates.year(#dates.createNow())}">1995</span> &#9473; created by Shahzaib
+</footer>
+</body>
+</html>

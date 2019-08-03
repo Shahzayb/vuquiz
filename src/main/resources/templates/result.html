@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shahzaib Sarwar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/main.css" th:href="@{/style/main.css}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700" rel="stylesheet">
+    <title>VU Quiz Result</title>
+</head>
+<body>
+<div class="content">
+    <header>
+        <nav>
+            <a class="nav-link float-left" th:href="@{/}" href="home.html">Home</a>
+            <a class="nav-link float-left" th:href="@{/quiz/result}" href="result.html">Result</a>
+
+            <a class="nav-fancy-link float-right" th:href="@{/login}" href="login.html"
+               sec:authorize="!isAuthenticated()">Login</a>
+            <form th:action="@{/logout}" method="post" class="float-right" sec:authorize="isAuthenticated()">
+                <input type="submit" value="Logout" class="nav-fancy-link">
+            </form>
+            <a class="nav-fancy-link float-right" sec:authorize="isAuthenticated()"
+               sec:authentication="name">Username</a>
+        </nav>
+    </header>
+    <div>
+        <table th:if="${quizzes.size() != 0}">
+            <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Date ( UTC )</th>
+                <th>Obtained Marks</th>
+                <th>Total Marks</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="quiz : ${quizzes}">
+                <td th:text="${quiz.subject.title}">title</td>
+                <td th:text="${#temporals.format(quiz.instant, 'd MMM yyyy hh:mm a')}">time</td>
+                <td th:text="${quiz.result}">32</td>
+                <td th:text="${quiz.totalMarks}">50</td>
+            </tr>
+            </tbody>
+
+        </table>
+        <div th:if="${quizzes.size() == 0}" class="no-result">No Result Found</div>
+    </div>
+</div>
+<footer class="full-width">
+    &copy; VU QUIZ <span th:text="${#dates.year(#dates.createNow())}">1995</span> &#9473; created by Shahzaib
+</footer>
+</body>
+</html>

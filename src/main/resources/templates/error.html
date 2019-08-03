@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shahzaib Sarwar">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style/main.css" th:href="@{/style/main.css}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700" rel="stylesheet">
+    <title>Error</title>
+</head>
+<body>
+<div class="content flexbox flexbox-center">
+    <div class="text-center">
+        <h1 class="heading">Error</h1>
+        <h2 th:text="${heading}" class="heading top-bottom-margin">Something Went Wrong</h2>
+        <a th:href="@{/}" class="button">Go Home</a>
+    </div>
+</div>
+<footer class="full-width">
+    &copy; VU QUIZ <span th:text="${#dates.year(#dates.createNow())}">1995</span> &#9473; created by Shahzaib
+</footer>
+</body>
+</html>
