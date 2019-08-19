@@ -1,7 +1,7 @@
 # VU Quiz
 
-VU Quiz is a demo application, same as the Virtual University of Pakistan.
-You can take quiz in any VU subject you like, for practice or fun.
+VU Quiz is a demo application, same as the [Virtual University of Pakistan](http://vu.edu.pk/)'s quiz system.
+You can take quiz in any VU's subject you like, for practice or for fun.
 
 ## Running vuquiz locally
 vuquiz is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/). You can build a jar file and run it from the command line:
